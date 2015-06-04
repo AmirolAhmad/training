@@ -3,6 +3,11 @@
   border-radius: 0;
 }
 
+.navbar-nav > li > a > img {
+  margin-top: -22px;
+  margin-bottom: -18px;
+}
+
 .nomar-bot {
   margin-bottom: 0;
   border-bottom: 1px solid transparent;
