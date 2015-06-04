@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   resources :items, except: [:show]
+  resources :bookings
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

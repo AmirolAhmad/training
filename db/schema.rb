@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604102555) do
+ActiveRecord::Schema.define(version: 20150604104409) do
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "item_id",    limit: 4
+    t.integer  "quantity",   limit: 4
+    t.datetime "startdate"
+    t.datetime "enddate"
+    t.integer  "status",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "bookings", ["item_id"], name: "index_bookings_on_item_id", using: :btree
+  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id", using: :btree
 
   create_table "items", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -42,4 +56,6 @@ ActiveRecord::Schema.define(version: 20150604102555) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "bookings", "items"
+  add_foreign_key "bookings", "users"
 end

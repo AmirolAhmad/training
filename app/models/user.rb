@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :bookings
+
   def set_default_role
     self.role ||= :user
     self.status ||= :whitelist

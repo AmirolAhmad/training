@@ -15,4 +15,10 @@ class ApplicationController < ActionController::Base
       redirect_to root_url, :alert => "Only admin can access this page"
     end
   end
+
+  def user_only
+    unless current_user.user?
+      redirect_to root_url, :alert => "Only user can access this page"
+    end
+  end
 end

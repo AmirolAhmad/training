@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!
   before_filter :set_item, only: [:edit, :update, :destroy]
   before_filter :admin_only
 
