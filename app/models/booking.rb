@@ -54,9 +54,9 @@ class Booking < ActiveRecord::Base
   end
 
   def overdue
-    if self.enddate < Time.now
+    if self.enddate < Time.now && !self.is_closed?
       self.update(status: 2)
-    elsif self.enddate > Time.now
+    elsif self.enddate > Time.now && !self.is_closed?
       self.update(status: 0)
     end
   end
