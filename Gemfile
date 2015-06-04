@@ -17,6 +17,7 @@ gem 'jquery-turbolinks'
 gem "rails_config"
 gem 'devise'
 gem 'annotate', '~> 2.6.6'
+gem 'whenever', :require => false
 
 group :development, :test do
   gem 'byebug'

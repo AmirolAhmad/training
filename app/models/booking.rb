@@ -51,4 +51,10 @@ class Booking < ActiveRecord::Base
       errors.add(:quantity, ": Sorry! There is no stock for #{self.item.name}. Please choose another item")
     end
   end
+
+  def overdue
+    if self.enddate > DateTime.now
+      self.update_attributes(:status => 2)
+    end
+  end
 end
