@@ -13,6 +13,7 @@
           %th.col-md-2 Status
           %th.col-md-2 Start Date
           %th.col-md-2 End Date
+          %th.col-md-2 Action
       %tbody
         - @bookings.each do |booking|
           %tr
@@ -27,4 +28,7 @@
                 %span.label.label-danger= booking.status
             %td= booking.startdate.strftime("%d %B %Y at %I:%M %p")
             %td= booking.enddate.strftime("%d %B %Y at %I:%M %p")
+            %td
+              = link_to booking_path(booking), class: "btn btn-default btn-block btn-xs" do
+                %span.glyphicon.glyphicon-share{"aria-hidden" => true}
 

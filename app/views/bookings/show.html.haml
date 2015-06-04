@@ -1,0 +1,44 @@
+.page-header
+  %h1 Booking Details
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title
+      Booking List
+  .panel-body
+    .row
+      .col-md-2
+        %strong
+          Item
+      .col-md-4
+        = @booking.item.name
+    .row
+      .col-md-2
+        %strong
+          Quantity
+      .col-md-4
+        = @booking.quantity
+    .row
+      .col-md-2
+        %strong
+          Status
+      .col-md-4
+        - if @booking.is_active?
+          %span.label.label-primary= @booking.status
+        - elsif @booking.is_closed?
+          %span.label.label-warning= @booking.status
+        - else
+          %span.label.label-danger= @booking.status
+    .row
+      .col-md-2
+        %strong
+          Start Date
+      .col-md-4
+        = @booking.startdate.strftime("%d %B %Y at %I:%M %p")
+    .row
+      .col-md-2
+        %strong
+          End Date
+      .col-md-4
+        = @booking.enddate.strftime("%d %B %Y at %I:%M %p")
+  .panel-footer
+    = link_to "Back", bookings_path, class: "btn btn-default"

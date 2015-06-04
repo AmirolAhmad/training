@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
-  before_filter :set_user, only: [:index, :new, :create]
+  before_filter :set_user, only: [:index, :new, :create, :show]
   
   def index
     @bookings = Booking.where(user_id: @user)
@@ -17,6 +17,15 @@ class BookingsController < ApplicationController
       redirect_to bookings_path, notice: "Awesome! New booking has been save!"
     else
       render 'new'
+    end
+  end
+
+  def show
+    @booking = Booking.where(id: params[:id], user: @user).take
+    if @booking
+      render
+    else
+      redirect_to bookings_path, notice: "Oopss! Booking not found!"
     end
   end
 
