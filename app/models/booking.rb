@@ -18,6 +18,7 @@ class Booking < ActiveRecord::Base
   after_initialize :set_default_status, :if => :new_record?
   after_create :subtract_quantity
 
+  validates_presence_of :item_id, :quantity, :startdate, :enddate, :status
   validate :available_quantity
 
   belongs_to :user
