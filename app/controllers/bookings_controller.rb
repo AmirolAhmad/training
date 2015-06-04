@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
   before_filter :set_user, only: [:index, :new, :create, :show]
+  before_filter :active_user_only, only: [:new, :create]
   
   def index
     @bookings = Booking.where(user_id: @user)

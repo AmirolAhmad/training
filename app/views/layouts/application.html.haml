@@ -12,4 +12,9 @@
 		= render partial: "alert"
 		= render partial: "header"
 		.container
+			- if user_signed_in? && current_user.is_suspend?
+				.alert.alert-danger{role: "alert"}
+					%strong
+						Oh snap!
+					Your account has been suspended due to a problem with your previous booking. During this time, you can't place any booking until you resolve the current problem. Thank you!
 			= yield

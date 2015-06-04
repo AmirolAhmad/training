@@ -21,4 +21,10 @@ class ApplicationController < ActionController::Base
       redirect_to root_url, :alert => "Only user can access this page"
     end
   end
+
+  def active_user_only
+    unless current_user.is_active?
+      redirect_to bookings_url, :alert => "Sorry! You are not allowed to place any booking at the moment."
+    end
+  end
 end
