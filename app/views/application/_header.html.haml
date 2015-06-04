@@ -1,0 +1,13 @@
+%nav.navbar.navbar-inverse
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to "Researchbods", root_path, class: "navbar-brand"
+    #navbar-collapse.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li= link_to "Home", "#"
+        %li= link_to "About", "#"
