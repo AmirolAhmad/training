@@ -21,7 +21,8 @@
 
 class User < ActiveRecord::Base
   enum role: [:user, :admin, :supplier]
-  enum status: [:whitelist, :blacklist]
+  # enum status: [:active, :suspend]
+  enum status: {"Active" => 0, "Suspend" => 1}
   after_initialize :set_default_role, :if => :new_record?
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
@@ -30,6 +31,14 @@ class User < ActiveRecord::Base
 
   def set_default_role
     self.role ||= :user
-    self.status ||= :whitelist
+    self.status ||= "Active"
+  end
+
+  def is_active?
+    status === "Active"
+  end
+
+  def is_suspend?
+    status === "Suspend"
   end
 end

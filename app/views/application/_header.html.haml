@@ -29,3 +29,10 @@
           = link_to register_path, class: "btn btn-default btn-xs navbar-btn" do
             .small.glyphicon.glyphicon-user
             Create An Account
+      - if user_signed_in?
+        %p.navbar-text.navbar-right.small.hidden-xs{style: "margin-right:20px;"}
+          Status:
+          - if current_user.is_active?
+            %span.label.label-primary= current_user.status
+          - elsif current_user.is_suspend?
+            %span.label.label-danger= current_user.status
