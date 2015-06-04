@@ -53,8 +53,12 @@ class Booking < ActiveRecord::Base
   end
 
   def overdue
-    if self.enddate > DateTime.now
-      self.update_attributes(:status => 2)
-    end
+    # Booking.all.each do |f|
+      if self.enddate < Time.now
+        self.update(status: 2)
+      elsif self.enddate > Time.now
+        self.update(status: 0)
+      end
+    # end
   end
 end

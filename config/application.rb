@@ -18,6 +18,8 @@ module Researchbods
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
     config.time_zone = 'Asia/Kuala_Lumpur'
+    config.active_record.default_timezone = :local
+    config.active_record.time_zone_aware_attributes = false
     config.encoding = "utf-8"
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.

@@ -22,11 +22,11 @@
         .form-group
           = f.label :startdate, "Start Date", class: "col-md-2 control-label"
           .col-md-10
-            = f.text_field :startdate, class: "form-control", value: "#{Time.now.strftime("%d %B %Y at %I:%M %p")}"
+            = f.text_field :startdate, class: "form-control", value: "#{Time.zone.now.strftime("%d %B %Y at %I:%M %p")}"
         .form-group
           = f.label :enddate, "End Date", class: "col-md-2 control-label"
           .col-md-10
-            = f.text_field :enddate, class: "form-control", value: "#{2.days.from_now.strftime("%d %B %Y at %I:%M %p")}"
+            = f.text_field :enddate, class: "form-control", value: "#{2.days.from_now.beginning_of_day.strftime("%d %B %Y at %I:%M %p")}"
   .panel-footer
     = f.submit "Submit", class: "btn btn-primary"
     = link_to "Cancel", bookings_path, class: "btn btn-default"
