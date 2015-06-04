@@ -21,7 +21,6 @@
 
 class User < ActiveRecord::Base
   enum role: [:user, :admin, :supplier]
-  # enum status: [:active, :suspend]
   enum status: {"Active" => 0, "Suspend" => 1}
   after_initialize :set_default_role, :if => :new_record?
 
@@ -40,5 +39,9 @@ class User < ActiveRecord::Base
 
   def is_suspend?
     status === "Suspend"
+  end
+
+  def check_status
+    self.bookings.pluck(:status).include?(2) ? self.update(status: 1) : self.update(status: 0)
   end
 end
