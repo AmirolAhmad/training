@@ -1,0 +1,28 @@
+.page-header
+  %h1 List of items
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title
+      Item List #{link_to "Add new item", new_item_url, class: "btn btn-xs btn-primary pull-right", style: "color:#FFFFFF;"}
+  .panel-body
+    %table.table.table-bordered.table-hovered
+      %thead
+        %tr
+          %th Name
+          %th Code
+          %th Quantity
+          %th.col-md-2 Status
+          %th.col-md-2 Date Created
+      %tbody
+        - @items.each do |item|
+          %tr
+            %td= item.name
+            %td= item.code
+            %td= item.quantity
+            %td
+              - if item.is_returnable?
+                %span.label.label-primary= item.status
+              - else
+                %span.label.label-danger= item.status
+            %td= item.created_at.strftime("%d %B %Y")
+

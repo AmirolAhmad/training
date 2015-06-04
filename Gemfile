@@ -16,6 +16,7 @@ gem "haml-rails", "~> 0.9"
 gem 'jquery-turbolinks'
 gem "rails_config"
 gem 'devise'
+gem 'annotate', '~> 2.6.6'
 
 group :development, :test do
   gem 'byebug'
