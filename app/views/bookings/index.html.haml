@@ -1,2 +1,30 @@
-%h1 Bookings#index
-%p Find me in app/views/bookings/index.html.haml
+.page-header
+  %h1 List of bookings
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title
+      Booking List #{link_to "Add new booking", new_booking_url, class: "btn btn-xs btn-primary pull-right", style: "color:#FFFFFF;"}
+  .panel-body
+    %table.table.table-bordered.table-hovered
+      %thead
+        %tr
+          %th Item
+          %th Quantity
+          %th.col-md-2 Status
+          %th.col-md-2 Start Date
+          %th.col-md-2 End Date
+      %tbody
+        - @bookings.each do |booking|
+          %tr
+            %td= booking.item.name
+            %td= booking.quantity
+            %td
+              - if booking.is_active?
+                %span.label.label-primary= booking.status
+              - elsif booking.is_closed?
+                %span.label.label-warning= booking.status
+              - else
+                %span.label.label-danger= booking.status
+            %td= booking.startdate.strftime("%d %B %Y at %I:%M %p")
+            %td= booking.enddate.strftime("%d %B %Y at %I:%M %p")
+
