@@ -13,6 +13,7 @@
           %th Quantity
           %th.col-md-2 Status
           %th.col-md-2 Date Created
+          %th.col-md-2 Action
       %tbody
         - @items.each do |item|
           %tr
@@ -25,4 +26,12 @@
               - else
                 %span.label.label-danger= item.status
             %td= item.created_at.strftime("%d %B %Y")
+            %td
+              .btn-group.btn-group-justified.btn-group-xs
+                = link_to item_url(item), class: "btn btn-primary" do
+                  %span.glyphicon.glyphicon-eye-open{"aria-hidden" => true}
+                = link_to edit_item_url(item), class: "btn btn-default" do
+                  %span.glyphicon.glyphicon-edit{"aria-hidden" => true}
+                = link_to item_url(item), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do
+                  %span.glyphicon.glyphicon-remove{"aria-hidden" => true}
 
