@@ -9,6 +9,7 @@
 		= javascript_include_tag 'application', 'data-turbolinks-track' => true
 		= csrf_meta_tags
 	%body{class: "#{body_class}"}
+		= render partial: "alert"
 		= render partial: "header"
 		.container
 			= yield
