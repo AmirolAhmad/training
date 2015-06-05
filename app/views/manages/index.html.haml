@@ -11,10 +11,10 @@
           %th User
           %th Item
           %th Quantity
-          %th.col-md-2 Status
+          %th.col-md-1 Status
           %th.col-md-2 Start Date
           %th.col-md-2 End Date
-          %th.col-md-2 Action
+          %th.col-md-3 Action
       %tbody
         - @manages.each do |manage|
           %tr
@@ -31,6 +31,11 @@
             %td= manage.startdate.strftime("%d %B %Y at %I:%M %p")
             %td= manage.enddate.strftime("%d %B %Y at %I:%M %p")
             %td
-              = link_to manage_path(manage), class: "btn btn-default btn-block btn-xs" do
-                %span.glyphicon.glyphicon-share{"aria-hidden" => true}
+              .btn-group.btn-group-justified
+                = link_to manage_path(manage), class: "btn btn-default btn-xs" do
+                  %span.glyphicon.glyphicon-share{"aria-hidden" => true}
+                -if manage.is_active?
+                  = link_to 'Mark as closed',set_close_manage_path(manage), method: :patch, class: "btn btn-xs btn-warning"
+                -if manage.is_closed?
+                  = link_to 'Mark as active',set_active_manage_path(manage), method: :patch, class: "btn btn-xs btn-primary"
 
