@@ -14,6 +14,7 @@
           %th.col-md-2 Start Date
           %th.col-md-2 End Date
           %th.col-md-2 Action
+          %th Fine
       %tbody
         - @bookings.each do |booking|
           %tr
@@ -31,4 +32,8 @@
             %td
               = link_to booking_path(booking), class: "btn btn-default btn-block btn-xs" do
                 %span.glyphicon.glyphicon-share{"aria-hidden" => true}
-
+            %td
+              - if booking.is_overdue? == true
+                = booking.fine
+              - else
+                N/A

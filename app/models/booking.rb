@@ -60,4 +60,20 @@ class Booking < ActiveRecord::Base
       self.update(status: 0)
     end
   end
+
+  def is_overdue?
+    due_date_absolute < Time.now && self.is_expired?
+  end
+
+  def due_date_absolute
+    self.enddate
+  end
+
+  def overdue_rate
+    10
+  end
+
+  def fine
+    overdue_rate * ((Time.now.beginning_of_day - due_date_absolute) / 1.days)
+  end
 end

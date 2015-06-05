@@ -34,7 +34,7 @@
               .btn-group.btn-group-justified
                 = link_to manage_path(manage), class: "btn btn-default btn-xs" do
                   %span.glyphicon.glyphicon-share{"aria-hidden" => true}
-                -if manage.is_active?
+                -if manage.is_active? || manage.is_expired?
                   = link_to 'Mark as closed',set_close_manage_path(manage), method: :patch, class: "btn btn-xs btn-warning"
                 -if manage.is_closed?
                   = link_to 'Mark as active',set_active_manage_path(manage), method: :patch, class: "btn btn-xs btn-primary"
