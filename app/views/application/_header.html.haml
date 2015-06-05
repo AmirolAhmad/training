@@ -9,8 +9,9 @@
       = link_to "Researchbods", root_path, class: "navbar-brand"
     #navbar-collapse.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li= link_to "Item", items_path
-        %li= link_to "Booking", bookings_path
+        %li= link_to "My Booking", bookings_path
+        %li= link_to "Manage Items", items_path
+        %li= link_to "Manage All Bookings", manages_path
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li.dropdown

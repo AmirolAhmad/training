@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :items, except: [:show]
   resources :bookings, except: [:edit, :update, :destroy]
+  resources :manages
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
