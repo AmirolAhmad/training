@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
   end
 
   def new
+    @items = Item.all
     @booking ||= Booking.new
     render
   end
