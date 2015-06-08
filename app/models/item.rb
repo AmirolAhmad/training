@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
   enum status: {"Returnable" => 0, "Not Returnable" => 1}
   after_create :random_product_code
 
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
 
   validates_presence_of :name, :quantity, :status
 
