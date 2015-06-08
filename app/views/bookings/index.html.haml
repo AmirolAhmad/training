@@ -34,6 +34,6 @@
                 %span.glyphicon.glyphicon-share{"aria-hidden" => true}
             %td
               - if booking.is_overdue? == true
-                USD#{booking.fine}0
+                = number_to_currency(booking.fine)
               - else
                 N/A
