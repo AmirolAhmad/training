@@ -9,16 +9,22 @@
       %thead
         %tr
           %th User
+          %th User Status
           %th Item
           %th Quantity
           %th.col-md-1 Status
           %th.col-md-2 Start Date
           %th.col-md-2 End Date
-          %th.col-md-3 Action
+          %th.col-md-2 Action
       %tbody
         - @manages.each do |manage|
           %tr
             %td= manage.user.email
+            %td
+              - if manage.user.is_active?
+                %span.label.label-primary= manage.user.status
+              - elsif manage.user.is_suspend?
+                %span.label.label-danger= manage.user.status
             %td= manage.item.name
             %td= manage.quantity
             %td
