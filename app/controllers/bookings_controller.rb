@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @items = Item.all
     @booking = @user.bookings.new(booking_params)
     if @booking.save
       redirect_to bookings_path, notice: "Awesome! New booking has been save!"
