@@ -10,7 +10,7 @@
         %tr
           %th Item
           %th Quantity
-          %th.col-md-2 Status
+          %th Status
           %th.col-md-2 Start Date
           %th.col-md-2 End Date
           %th.col-md-2 Action
@@ -34,6 +34,6 @@
                 %span.glyphicon.glyphicon-share{"aria-hidden" => true}
             %td
               - if booking.is_overdue? == true
-                = booking.fine
+                USD#{booking.fine}0
               - else
                 N/A
