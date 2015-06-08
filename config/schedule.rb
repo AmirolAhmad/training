@@ -20,4 +20,5 @@
 # Learn more: http://github.com/javan/whenever
 every 1.minute do
   rake 'check_booking_status'
+  rake 'check_user_status'
 end
